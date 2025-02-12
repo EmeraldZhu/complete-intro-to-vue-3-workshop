@@ -11,8 +11,7 @@
       <p>Count: {{ count }}</p>
       <label for="incAmount">Increment By </label>
       <input type="number" name="incAmount" id="incAmount"
-        v-bind:value="incAmount"
-        v-on:input="changeIncAmount"
+        v-model="incAmount"
       >
       <br><br>
       <button v-on:click="increment()">Increment</button>
@@ -37,9 +36,6 @@
           },
           decrement() {
             this.count--
-          },
-          changeIncAmount(event) {
-            this.incAmount = Number(event.target.value)
           }
         }
       })
