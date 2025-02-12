@@ -6,5 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Playground — Complete Intro to Vue 3</title>
   </head>
-  <body></body>
+  <body>
+    <div id="app">
+      <p>Count: {{ count }}</p>
+      <label for="incAmount">Increment By </label>
+      <input type="number" name="incAmount" id="incAmount"
+        v-bind:value="incAmount"
+        v-on:input="changeIncAmount"
+      >
+      <br><br>
+      <button v-on:click="increment()">Increment</button>
+      <br><br>
+      <button v-on:click="decrement()">Decrement</button>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+      const { createApp } = Vue;
+      const app = createApp({
+        data() {
+          return {
+            count: 0,
+            incAmount: 1
+          }
+        },
+
+        methods: {
+          increment() {
+            this.count += this.incAmount
+          },
+          decrement() {
+            this.count--
+          },
+          changeIncAmount(event) {
+            this.incAmount = Number(event.target.value)
+          }
+        }
+      })
+
+      app.mount('#app')
+    </script>
+  </body>
 </html>
