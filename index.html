@@ -4,7 +4,35 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Exercise 1: Vue Directives</title>
   </head>
-  <body></body>
+  <body>
+    <div id="app">
+      <h1>F.R.I.E.N.D.S</h1>
+      <p v-if="cast.length === 0">No characters present</p>
+      <p v-else>
+        <ul>
+          <li v-for="character in cast">{{ character.name }} plays as {{ character.role }}</li>
+        </ul>
+      </p>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      const { createApp } = Vue;
+      const app = createApp({
+        data() {
+          return {
+            cast: [
+              { name: "Matthew Perry", role: "Chandler" },
+              { name: "Matt Le Blanc", role: "Joey" },
+              { name: "Jennifer Aniston", role: "Rachel" },
+            ],
+          }
+        }
+      });
+
+      app.mount('#app');
+    </script>
+  </body>
 </html>
